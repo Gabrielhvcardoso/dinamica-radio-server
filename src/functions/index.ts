@@ -2,12 +2,14 @@ import { Banner } from '../types/banner'
 import { Category } from '../types/category'
 import { Client } from '../types/client'
 import { Program } from '../types/program'
+import { ScheduleProgram } from '../types/scheduleProgram'
 import { User } from '../types/user'
 
 import banner from './core/banner'
 import category from './core/category'
 import client from './core/client'
 import program from './core/program'
+import scheduleProgram from './core/scheduleProgram'
 import user from './core/user'
 
 type Response = { code: string }
@@ -59,6 +61,13 @@ interface Functions {
     update: (programId: number, title?: string | null, image?: string | null) => Promise<Response>,
     destroy: (programId: number) => Promise<Response>
   },
+  scheduleProgram: {
+    index: () => Promise<Array<ScheduleProgram>>,
+    find: (scheduleProgramId: number) => Promise<Array<ScheduleProgram> | Response>,
+    store: (programId: number, weekday: 1 | 2 | 3 | 4 | 5 | 6 | 7, startAt: string, duration: number) => Promise<number | Response>,
+    update: (scheduleProgramId: number, startAt?: string | null, duration?: number | null) => Promise<Response>,
+    destroy: (scheduleProgramId: number) => Promise<Response>,
+  },
   user: {
     index: () => Promise<Array<User>>,
     find: (userId: number) => Promise<Array<User> | Response>,
@@ -73,6 +82,7 @@ const functions: Functions = {
   category,
   client,
   program,
+  scheduleProgram,
   user
 }
 
