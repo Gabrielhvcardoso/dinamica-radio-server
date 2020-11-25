@@ -3,6 +3,7 @@ import { Category } from '../types/category'
 import { Client } from '../types/client'
 import { Program } from '../types/program'
 import { ScheduleProgram } from '../types/scheduleProgram'
+import { Tag } from '../types/tag'
 import { User } from '../types/user'
 
 import banner from './core/banner'
@@ -10,6 +11,7 @@ import category from './core/category'
 import client from './core/client'
 import program from './core/program'
 import scheduleProgram from './core/scheduleProgram'
+import tag from './core/tag'
 import user from './core/user'
 
 type Response = { code: string }
@@ -68,6 +70,12 @@ interface Functions {
     update: (scheduleProgramId: number, startAt?: string | null, duration?: number | null) => Promise<Response>,
     destroy: (scheduleProgramId: number) => Promise<Response>,
   },
+  tag: {
+    index: () => Promise<Array<Tag>>,
+    find: (tagId: number) => Promise<Array<Tag> | Response>,
+    store: (programId: number, categoryId: number) => Promise<number | Response>
+    destroy: (tagId: number) => Promise<Response>,
+  },
   user: {
     index: () => Promise<Array<User>>,
     find: (userId: number) => Promise<Array<User> | Response>,
@@ -83,6 +91,7 @@ const functions: Functions = {
   client,
   program,
   scheduleProgram,
+  tag,
   user
 }
 
