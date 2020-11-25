@@ -1,12 +1,39 @@
+import { Banner } from '../types/banner'
 import { Client } from '../types/client'
 import { User } from '../types/user'
 
+import banner from './core/banner'
 import client from './core/client'
 import user from './core/user'
 
 type Response = { code: string }
 
 interface Functions {
+  banner: {
+    index: () => Promise<Array<Banner>>,
+    find: (bannerId: number) => Promise<Array<Banner> | Response>,
+    store: (
+      clientId: number,
+      title: string,
+      description?: string | null,
+      image?: string | null,
+      link?: string | null,
+      targetProgram?: number | null,
+      targetCategory?: number | null,
+      expiresAt?: number | null
+    ) => Promise<number | Response>,
+    update: (
+      bannerId: number,
+      title?: string | null,
+      description?: string | null,
+      image?: string | null,
+      link?: string | null,
+      targetProgram?: number | null,
+      targetCategory?: number | null,
+      expiresAt?: number | null
+    ) => Promise<Response>,
+    destroy: (bannerId: number) => Promise<Response>
+  },
   client: {
     index: () => Promise<Array<Client>>,
     find: (clientId: number) => Promise<Array<Client> | Response>,
@@ -24,6 +51,7 @@ interface Functions {
 }
 
 const functions: Functions = {
+  banner,
   client,
   user
 }
