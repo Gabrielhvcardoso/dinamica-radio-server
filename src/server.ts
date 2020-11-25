@@ -17,4 +17,4 @@ app.use('/sch', scheduleProgram)
 app.use('/tag', tag)
 app.use('/use', user)
 
-app.listen(3333)
+export default app
