@@ -1,13 +1,10 @@
 import { Router } from 'express'
 import api from '../api'
 
-const {
-  index
-} = api
 const routes = Router()
 
 // pro
 
-routes.post('/', index)
+routes.post('/', api.program.index)
 
 export default routes

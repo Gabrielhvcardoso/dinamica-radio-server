@@ -1,11 +1,10 @@
 import { Router } from 'express'
+import api from '../api'
 
 const routes = Router()
 
 // ban
 
-routes.get('/', (req, res) => {
-  res.send({ hello: 'world' })
-})
+routes.post('/', api.banner.index)
 
 export default routes

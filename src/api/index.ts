@@ -1,11 +1,11 @@
-import index from './programs'
+import banner from './banner'
+import category from './category'
+import program from './program'
 
-interface ApiProps {
-  index: any
-}
-
-const api: ApiProps = {
-  index
+const api = {
+  banner,
+  category,
+  program
 }
 
 export default api
