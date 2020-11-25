@@ -13,7 +13,7 @@ export default async function index (req, res) {
       'program.title as programTitle',
       'program.image as programImage',
 
-      'banner.targetCategory as categoryid',
+      'banner.targetCategory as categoryId',
       'category.name as categoryName',
 
       'banner.bannerId',
