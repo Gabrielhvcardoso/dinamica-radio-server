@@ -1,9 +1,11 @@
 import { Banner } from '../types/banner'
+import { Category } from '../types/category'
 import { Client } from '../types/client'
 import { Program } from '../types/program'
 import { User } from '../types/user'
 
 import banner from './core/banner'
+import category from './core/category'
 import client from './core/client'
 import program from './core/program'
 import user from './core/user'
@@ -36,6 +38,13 @@ interface Functions {
     ) => Promise<Response>,
     destroy: (bannerId: number) => Promise<Response>
   },
+  category: {
+    index: () => Promise<Array<Category>>,
+    find: (programId: number) => Promise<Array<Category> | Response>,
+    store: (clientId: number, name: string) => Promise<number | Response>,
+    update: (programId: number, name: string) => Promise<Response>,
+    destroy: (programId: number) => Promise<Response>
+  },
   client: {
     index: () => Promise<Array<Client>>,
     find: (clientId: number) => Promise<Array<Client> | Response>,
@@ -61,6 +70,7 @@ interface Functions {
 
 const functions: Functions = {
   banner,
+  category,
   client,
   program,
   user
