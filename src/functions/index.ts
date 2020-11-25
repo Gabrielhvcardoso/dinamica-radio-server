@@ -1,9 +1,11 @@
 import { Banner } from '../types/banner'
 import { Client } from '../types/client'
+import { Program } from '../types/program'
 import { User } from '../types/user'
 
 import banner from './core/banner'
 import client from './core/client'
+import program from './core/program'
 import user from './core/user'
 
 type Response = { code: string }
@@ -41,6 +43,13 @@ interface Functions {
     update: (clientId: number, mail: string | null, password: string | null) => Promise<Response>,
     destroy: (clientId: number) => Promise<Response>
   },
+  program: {
+    index: () => Promise<Array<Program>>,
+    find: (programId: number) => Promise<Array<Program> | Response>,
+    store: (clientId: number, title: string, image: string) => Promise<number | Response>,
+    update: (programId: number, title?: string | null, image?: string | null) => Promise<Response>,
+    destroy: (programId: number) => Promise<Response>
+  },
   user: {
     index: () => Promise<Array<User>>,
     find: (userId: number) => Promise<Array<User> | Response>,
@@ -53,6 +62,7 @@ interface Functions {
 const functions: Functions = {
   banner,
   client,
+  program,
   user
 }
 
