@@ -20,6 +20,7 @@ interface Functions {
   banner: {
     index: () => Promise<Array<Banner>>,
     find: (bannerId: number) => Promise<Array<Banner> | Response>,
+    findWhere: (where: {}) => Promise<Array<Banner> | Response>,
     store: (
       clientId: number,
       title: string,
@@ -45,6 +46,7 @@ interface Functions {
   category: {
     index: () => Promise<Array<Category>>,
     find: (programId: number) => Promise<Array<Category> | Response>,
+    findWhere: (where: {}) => Promise<Array<Category> | Response>,
     store: (clientId: number, name: string) => Promise<number | Response>,
     update: (programId: number, name: string) => Promise<Response>,
     destroy: (programId: number) => Promise<Response>
@@ -52,6 +54,7 @@ interface Functions {
   client: {
     index: () => Promise<Array<Client>>,
     find: (clientId: number) => Promise<Array<Client> | Response>,
+    findWhere: (where: {}) => Promise<Array<Client> | Response>,
     store: (mail: string, password: string) => Promise<number | Response>,
     update: (clientId: number, mail: string | null, password: string | null) => Promise<Response>,
     destroy: (clientId: number) => Promise<Response>
@@ -59,6 +62,7 @@ interface Functions {
   program: {
     index: () => Promise<Array<Program>>,
     find: (programId: number) => Promise<Array<Program> | Response>,
+    findWhere: (where: {}) => Promise<Array<Program> | Response>,
     store: (clientId: number, title: string, image: string) => Promise<number | Response>,
     update: (programId: number, title?: string | null, image?: string | null) => Promise<Response>,
     destroy: (programId: number) => Promise<Response>
@@ -66,6 +70,7 @@ interface Functions {
   scheduleProgram: {
     index: () => Promise<Array<ScheduleProgram>>,
     find: (scheduleProgramId: number) => Promise<Array<ScheduleProgram> | Response>,
+    findWhere: (where: {}) => Promise<Array<ScheduleProgram> | Response>,
     store: (programId: number, weekday: 1 | 2 | 3 | 4 | 5 | 6 | 7, startAt: string, duration: number) => Promise<number | Response>,
     update: (scheduleProgramId: number, startAt?: string | null, duration?: number | null) => Promise<Response>,
     destroy: (scheduleProgramId: number) => Promise<Response>,
@@ -73,12 +78,14 @@ interface Functions {
   tag: {
     index: () => Promise<Array<Tag>>,
     find: (tagId: number) => Promise<Array<Tag> | Response>,
+    findWhere: (where: {}) => Promise<Array<Tag> | Response>,
     store: (programId: number, categoryId: number) => Promise<number | Response>
     destroy: (tagId: number) => Promise<Response>,
   },
   user: {
     index: () => Promise<Array<User>>,
     find: (userId: number) => Promise<Array<User> | Response>,
+    findWhere: (where: {}) => Promise<Array<User> | Response>,
     store: (clientId: number, notificationToken: string, platform: string) => Promise<number | Response>,
     update: (userId: number, notificationToken: string | null, platform: string | null) => Promise<Response>,
     destroy: (userId: number) => Promise<Response>
