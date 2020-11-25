@@ -1,4 +1,6 @@
 import express from 'express'
+import cors from 'cors'
+
 import banner from './routes/banner.routes'
 import category from './routes/category.routes'
 import client from './routes/client.routes'
@@ -9,6 +11,7 @@ import user from './routes/user.routes'
 
 const app = express()
 
+app.use(cors())
 app.use(express.json())
 
 app.use('/ban', banner)
