@@ -9,6 +9,8 @@ import user from './routes/user.routes'
 
 const app = express()
 
+app.use(express.json())
+
 app.use('/ban', banner)
 app.use('/cat', category)
 app.use('/cli', client)

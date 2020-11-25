@@ -1,11 +1,13 @@
 import { Router } from 'express'
+import api from '../api'
 
+const {
+  index
+} = api
 const routes = Router()
 
 // pro
 
-routes.get('/', (req, res) => {
-  res.send({ hello: 'world' })
-})
+routes.post('/', index)
 
 export default routes
