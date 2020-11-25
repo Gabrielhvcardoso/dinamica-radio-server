@@ -1,0 +1,18 @@
+{
+  "sqltools.connections": [
+    {
+      "mysqlOptions": {
+        "authProtocol": "default"
+      },
+      "previewLimit": 50,
+      "server": "mysql.dmihost.com.br",
+      "port": 3306,
+      "driver": "MySQL",
+      "name": "Dinâmica Rádio Database",
+      "group": "Dinâmica",
+      "database": "dmihost01",
+      "username": "dmihost01",
+      "password": "PmdFbgl4zo2z"
+    }
+  ]
+}

@@ -1,4 +1,4 @@
 const knexfile = require('../../knexfile.js')
 const knex = require('knex')(knexfile)
 
-module.exports = knex
+export default knex
