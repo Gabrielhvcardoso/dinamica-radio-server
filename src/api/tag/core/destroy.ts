@@ -8,7 +8,7 @@ export default async function destroy (req, res) {
   const response = await functions.tag.findWhere({ programId, categoryId })
 
   if (!response[0]) {
-    return res.send({ code: 'error' })
+    return res.send({ code: 'error', message: 'Tag hadn\'t been found.' })
   }
 
   const deleted = await functions.tag.destroy(response[0])
@@ -17,5 +17,5 @@ export default async function destroy (req, res) {
     return res.send({ code: 'success' })
   }
 
-  res.send({ code: 'error' })
+  res.send({ code: 'error', message: 'Tag couldn\'t be removed.' })
 }
