@@ -11,7 +11,7 @@ export default async function destroy (req, res) {
     return res.send({ code: 'error', message: 'Tag hadn\'t been found.' })
   }
 
-  const deleted = await functions.tag.destroy(response[0])
+  const deleted = await functions.tag.destroy(response[0].tagId)
 
   if (deleted.code === 'success') {
     return res.send({ code: 'success' })
