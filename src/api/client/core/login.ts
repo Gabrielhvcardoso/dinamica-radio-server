@@ -3,7 +3,9 @@ import functions from '../../../functions'
 export default async function index (req, res) {
   const { mail, password } = req.body
 
-  const response = functions.client.findWhere({ mail, password })
+  if (!mail || !password) res.sendStatus(404)
+
+  const response = await functions.client.findWhere({ mail, password })
 
   if (!response[0]) {
     return res.send({
