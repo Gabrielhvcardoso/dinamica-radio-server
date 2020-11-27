@@ -45,11 +45,11 @@ interface Functions {
   },
   category: {
     index: () => Promise<Array<Category>>,
-    find: (programId: number) => Promise<Array<Category> | Response>,
+    find: (categoryId: number) => Promise<Array<Category> | Response>,
     findWhere: (where: {}) => Promise<Array<Category> | Response>,
     store: (clientId: number, name: string) => Promise<number | Response>,
-    update: (programId: number, name: string) => Promise<Response>,
-    destroy: (programId: number) => Promise<Response>
+    update: (categoryId: number, name: string) => Promise<Response>,
+    destroy: (categoryId: number) => Promise<Response>
   },
   client: {
     index: () => Promise<Array<Client>>,

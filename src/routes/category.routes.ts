@@ -7,5 +7,6 @@ const routes = Router()
 
 routes.post('/', api.category.index)
 routes.put('/', api.category.create)
+routes.delete('/:categoryId', api.category.destroy)
 
 export default routes
