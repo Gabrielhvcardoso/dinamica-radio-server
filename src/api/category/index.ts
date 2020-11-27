@@ -1,10 +1,13 @@
+import create from './core/create'
 import index from './core'
 
 interface CategoryProps {
-  index: (req: any, res: any) => void
+  create: (req: any, res: any) => void,
+  index: (req: any, res: any) => void,
 }
 
 const category: CategoryProps = {
+  create,
   index
 }
 
