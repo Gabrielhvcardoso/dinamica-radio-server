@@ -20,19 +20,27 @@ export default async function updateWeekday (req: Request, res) {
   if (!clientId || !weekday || !programs) return res.sendStatus(404)
 
   knex('scheduleProgram')
-    .del()
-    .where({ clientId, weekday })
-    .then(() => {
-      const programsToInsert = programs.map(({ programId, startAt, duration }) => ({
-        programId,
-        weekday,
-        startAt,
-        duration
-      }))
+    .innerJoin('program', 'scheduleProgram.programId', 'program.programId')
+    .where({ weekday })
+    .then((response) => {
+      const fromClient = response.filter(item => item.clientId === clientId).map((item) => item.scheduleProgramId)
 
       knex('scheduleProgram')
-        .insert(programsToInsert)
-        .then(() => res.send({ code: 'success' }))
-        .catch(() => res.send({ code: 'error' }))
+        .whereIn('scheduleProgramId', fromClient)
+        .del()
+        .then(() => {
+          const programsToInsert = programs.map(({ programId, startAt, duration }) => ({
+            programId,
+            weekday,
+            startAt,
+            duration
+          }))
+
+          knex('scheduleProgram')
+            .insert(programsToInsert)
+            .then(() => res.send({ code: 'success' }))
+            .catch(() => res.send({ code: 'error' }))
+        })
+        .catch((e) => res.send(e))
     })
 }
