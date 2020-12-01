@@ -1,5 +1,6 @@
 import knex from '../../../database'
 import fs from 'fs'
+import path from 'path'
 
 export default async function destroy (req, res) {
   const { programId } = req.params
@@ -12,8 +13,7 @@ export default async function destroy (req, res) {
   const { image } = program
 
   try {
-    // eslint-disable-next-line node/no-path-concat
-    fs.unlinkSync(__dirname + '/../../../../../../web' + image.split('http://dmihost.com.br')[1])
+    fs.unlinkSync(path.resolve(__dirname, '..', '..', '..', '..', '..', '..', 'web', 'storage', 'radio', image.split('radio/')[1]))
   } catch (e) {
     console.log(e)
     return res.send({ code: 'error', message: 'Wasn\'t possible to remove program image from server.' })
