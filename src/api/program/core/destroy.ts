@@ -13,7 +13,7 @@ export default async function destroy (req, res) {
 
   try {
     // eslint-disable-next-line node/no-path-concat
-    fs.unlinkSync(__dirname + '/../../../../../../web' + image.split('http://dmihost.com.br')[1])
+    fs.unlinkSync(__dirname + '/../../../../../web' + image.split('http://dmihost.com.br')[1])
   } catch (e) {
     console.log(e)
     return res.send({ code: 'error', message: 'Wasn\'t possible to remove program image from server.' })
