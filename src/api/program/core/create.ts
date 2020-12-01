@@ -1,7 +1,7 @@
 import functions from '../../../functions'
 
 export default async function create (req, res) {
-  const { clientId, title } = req.file
+  const { clientId, title } = req.body
 
   if (!clientId || !title || !req.file) return res.sendStatus(404)
 
