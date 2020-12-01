@@ -13,7 +13,8 @@ export default async function destroy (req, res) {
 
   try {
     fs.unlinkSync('../../../../../../web' + image.split('http://dmihost.com.br')[1])
-  } catch {
+  } catch (e) {
+    console.log(e)
     return res.send({ code: 'error', message: 'Wasn\'t possible to remove program image from server.' })
   }
 
