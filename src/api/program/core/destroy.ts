@@ -12,7 +12,8 @@ export default async function destroy (req, res) {
   const { image } = program
 
   try {
-    fs.unlinkSync('../../../../../../web' + image.split('http://dmihost.com.br')[1])
+    // eslint-disable-next-line node/no-path-concat
+    fs.unlinkSync(__dirname + '/../../../../../../web' + image.split('http://dmihost.com.br')[1])
   } catch (e) {
     console.log(e)
     return res.send({ code: 'error', message: 'Wasn\'t possible to remove program image from server.' })
