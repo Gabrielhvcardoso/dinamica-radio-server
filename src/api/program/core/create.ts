@@ -19,7 +19,7 @@ export default async function create (req, res) {
   }
 
   res.send({
-    code: 'successs',
+    code: 'success',
     programId: response
   })
 }
