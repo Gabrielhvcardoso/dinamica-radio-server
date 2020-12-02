@@ -2,6 +2,7 @@ import knex from '../../../database'
 
 export default async function create (req, res) {
   const {
+    clientId,
     title,
     description,
     targetProgram,
@@ -10,10 +11,11 @@ export default async function create (req, res) {
     expiresAt
   } = req.body
 
-  if (!title) return res.sendStatus(404)
+  if (!clientId || !title) return res.sendStatus(404)
 
   const bannerId = (await knex('banner')
     .insert({
+      clientId,
       title,
       description: description || null,
       targetProgram: targetProgram || null,
