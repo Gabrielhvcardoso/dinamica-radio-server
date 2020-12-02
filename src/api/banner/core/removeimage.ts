@@ -15,6 +15,7 @@ export default async function removeimage (req, res) {
   if (image) {
     try {
       fs.unlinkSync(path.resolve(__dirname, '..', '..', '..', '..', '..', '..', 'www', 'storage', 'radio', image.split('radio/')[1]))
+      knex('banner').where({ bannerId }).update({ image: null })
       res.send({ code: 'success' })
     } catch (e) {
       console.log(e)
