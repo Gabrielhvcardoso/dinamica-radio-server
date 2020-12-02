@@ -7,6 +7,7 @@ const routes = Router()
 
 // ban
 
+routes.get('/rm/:bannerId', api.banner.removeimage)
 routes.post('/', api.banner.index)
 routes.put('/', multer(multerConfig).single('file'), api.banner.create)
 routes.post('/:bannerId', multer(multerConfig).single('file'), api.banner.update)

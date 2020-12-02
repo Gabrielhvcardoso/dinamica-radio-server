@@ -1,10 +1,10 @@
 import knex from '../../../database'
-import functions from '../../../functions'
 import path from 'path'
 import fs from 'fs'
 
-export default async function destroy (req, res) {
+export default async function removeimage (req, res) {
   const { bannerId } = req.params
+
   if (!bannerId) return res.sendStatus(404)
 
   const banner = (await knex('banner').where({ bannerId }))[0]
@@ -15,12 +15,12 @@ export default async function destroy (req, res) {
   if (image) {
     try {
       fs.unlinkSync(path.resolve(__dirname, '..', '..', '..', '..', '..', '..', 'www', 'storage', 'radio', image.split('radio/')[1]))
+      res.send({ code: 'success' })
     } catch (e) {
       console.log(e)
       return res.send({ code: 'error', message: 'Wasn\'t possible to remove program image from server.' })
     }
+  } else {
+    res.send({ code: 'error' })
   }
-
-  const response = await functions.banner.destroy(bannerId)
-  res.send({ code: response.code })
 }
