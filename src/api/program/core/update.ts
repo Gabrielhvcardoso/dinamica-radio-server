@@ -2,7 +2,7 @@ import knex from '../../../database'
 import fs from 'fs'
 import path from 'path'
 
-export default async function index (req, res) {
+export default async function update (req, res) {
   const { programId } = req.params
   const { title } = req.body
 
