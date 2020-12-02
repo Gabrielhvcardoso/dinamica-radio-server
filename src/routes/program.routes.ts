@@ -9,6 +9,7 @@ const routes = Router()
 
 routes.post('/', api.program.index)
 routes.put('/', multer(multerConfig).single('file'), api.program.create)
+routes.post('/:programId', multer(multerConfig).single('file'), api.program.update)
 routes.delete('/:programId', api.program.destroy)
 
 export default routes
