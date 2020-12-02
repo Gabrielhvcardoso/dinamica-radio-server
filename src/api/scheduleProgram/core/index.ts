@@ -2,9 +2,14 @@ import crypto from 'crypto'
 import knex from '../../../database'
 
 export default async function index (req, res) {
+  const { clientId } = req.params
+
+  if (!clientId) return res.sendStatus(404)
+
   const ReceivedSchedulePrograms = await knex('scheduleProgram')
     .innerJoin('program', 'scheduleProgram.programId', 'program.programId')
     .select('program.programId', 'weekday', 'startAt', 'duration', 'title', 'image')
+    .where({ 'program.clientId': clientId })
 
   const schedulePrograms = ReceivedSchedulePrograms.map((item) => ({
     ...item,
